@@ -1,0 +1,76 @@
+version: '3.8'
+
+volumes:
+  cache:
+  db:  
+
+# RabbitMQ properties
+services:
+
+    rabbitmq:
+        image: rabbitmq:3-management
+        ports:
+            - 5672:5672
+            - 15672:15672
+        environment:
+            RABBITMQ_DEFAULT_USER: guest
+            RABBITMQ_DEFAULT_PASS: guest
+    
+        volumes:
+                # data persistence
+                - ./docker_conf/rabbitmq/data/:/var/lib/rabbitmq/
+                # data mapping -> host: container
+                # queues and messages data of the container will be stored on the host
+
+        restart: always
+
+#POSTGRES properties
+    db:
+        image: postgres
+        restart: always
+        ports:
+            - '5432:5432'
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: postgres    
+        volumes:
+            - db:/var/lib/postgresql/data
+
+#REDIS-CACHE properties
+    cache:
+        image: redis:alpine
+        restart: always
+        ports:
+          - '6379:6379'
+        volumes: 
+          - cache:/data
+
+#REDIS-COMMANDER properties
+    redis-commander:
+        hostname: redis-commander
+        image: ghcr.io/joeferner/redis-commander:latest
+        restart: always
+        environment:
+            - REDIS_HOSTS=local:redis:6379
+        ports:
+            - "8081:8081"
+
+# API-ORDER properties
+    api-order:
+        build:
+            context: ./api-order
+        ports:
+            - 3000:3000   
+        depends_on:
+            - db   
+
+#API-STOCK properties
+
+    api-stock:
+        build:
+            context: ./api-stock
+        ports:
+            - 3001:3000
+        depends_on:
+            - cache   

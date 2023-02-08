@@ -1,0 +1,6 @@
+export enum EOrder{
+    NEW_ORDER="NEW_ORDER",
+    UPDATE_ORDER="UPDATE_ORDER",
+    CANCEL_ORDER="CANCEL_ORDER",
+    ORDER="order"
+};

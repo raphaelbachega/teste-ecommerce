@@ -1,0 +1,165 @@
+{
+	"info": {
+		"_postman_id": "fd9e33fc-2536-4bd2-b52d-de9767378e9c",
+		"name": "ecommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12519340"
+	},
+	"item": [
+		{
+			"name": "api-order",
+			"item": [
+				{
+					"name": "create order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"itemList\": [{\n        \"sku\": \"Notebook azul\",\n        \"quantity\": 2\n    },\n    {\n        \"sku\": \"Notebook Preto\",\n        \"quantity\": 1\n    },\n    {\n        \"sku\": \"PC gamerX\",\n        \"quantity\": 3\n    },\n    {\n        \"sku\": \"Fogão Cooktop\",\n        \"quantity\": 2\n    }],\n    \"price\": 5000.00\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/order/createOrder",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"order",
+								"createOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/order/listOrder",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"order",
+								"listOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/order/ff2e1504-6236-460b-843f-9d03a96f98db",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"order",
+								"ff2e1504-6236-460b-843f-9d03a96f98db"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/order/orderDelete/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"order",
+								"orderDelete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateOrder",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 24,\n        \"orderId\": \"1a2e8669-3138-4d5c-9718-1ca21325636a\",\n        \"customer\": \"ea2f1dd7-b80b-4bc8-bb05-b37c77e4e8f9\",\n        \"itemList\": [\n            {\n                \"sku\": \"Notebook Preto\",\n                \"quantity\": 3\n            },\n            {\n                \"sku\": \"Fogão Cooktop\",\n                \"quantity\": 3\n            },\n            {\n                \"sku\": \"PC gamerX\",\n                \"quantity\": 2\n            }\n        ],\n        \"price\": \"20000\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/order/updateOrder/24",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"order",
+								"updateOrder",
+								"24"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancelOrder",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"itemList\": [\n        {\n            \"sku\": \"Notebook verde\",\n            \"quantity\": 2\n        },\n        {\n            \"sku\": \"Notebook Rosa\",\n            \"quantity\": 4\n        },\n        {\n            \"sku\": \"PC gamerZ\",\n            \"quantity\": 1\n        },\n        {\n            \"sku\": \"Fogão Cooktop\",\n            \"quantity\": 1\n        }\n    ],\n    \"price\": 12000.00\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/order/cancelOrder/39",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"order",
+								"cancelOrder",
+								"39"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

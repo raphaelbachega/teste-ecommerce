@@ -8,7 +8,7 @@ Criar um novo pedido
 Alterar um pedido existente
 Cancelar um pedido
 Listagem de pedidos
-Publicar informações do pedido em uma fila de mensagens (sistema de mensageria a ser escolhido)
+Publicar informações do pedido em uma fila de mensagens RabbitMQ
 Processar e atualizar o estoque de produtos com base nas informações da fila de mensagens
 
 Tecnologias Utilizadas:
